@@ -5,3 +5,12 @@ This is a project for fun and practice. It will use a popquiz api to prompt user
 The technologies used in this project will be:
     * [axios](https://github.com/axios/axios)
     * [react](https://reactjs.org/)
+    * [bootstrap](https://getbootstrap.com/)
+
+
+TODO:
+    * Add parameters for API request (for example: question amount, category, difficulty)
+    * Add functionality for multiple choice questions and true/false questions
+    * Add score functionality to display the amount of rights and wrongs
+    * Add an ending page which contains game info
+    * Add a quiz timer which user can choose to turn on and off
