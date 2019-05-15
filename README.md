@@ -13,6 +13,7 @@ This is a project for fun and practice. It will use a popquiz api to prompt user
 #### TODO:
     * Add parameters for API request (for example: question amount, category, difficulty)
     * Add functionality for multiple choice questions and true/false questions
-    * Add score functionality to display the amount of rights and wrongs
+    * Add score functionality to display the amount of rights and wrongs (done)
     * Add an ending page which contains game info
-    * Add a quiz timer which user can choose to turn on and off
+    * Add a quiz timer
+    * Add score functionality (done)
