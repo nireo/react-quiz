@@ -9,7 +9,7 @@ function App() {
 
 	const hook = () => {
 		axios
-			.get('https://opentdb.com/api.php?amount=10')
+			.get('https://opentdb.com/api.php?amount=10&type=boolean')
 			.then(response => {
 				// since the api response in an object turns object in to a simpler array for useState
 				const objectArray = Object.values(response.data)
@@ -18,17 +18,16 @@ function App() {
 			})
 	}
 
+	// execute the api request
 	useEffect(hook, [])
 
-	const displayAll = questions.map(question => <Question question={question}/>)
-//	const allQuestions = questions.results.map(question => <li>{question.category} {question.question} {question.correct_answer} {question.difficulty}</li>)
-
+	// displays a different site to users, if they started the game
 	if (gameOn) {
 		return (
-			<div>
-				The game has started
+			<div className="jumbotron">
+				<h1>Question:</h1>
 				<ul>
-					{displayAll}
+					<Question questions={ questions } />
 				</ul>
 				<button className="btn btn-dark" onClick={() => setGameOn(false)}>go back</button>
 			</div>
@@ -37,8 +36,10 @@ function App() {
 
 	// render starting page
   	return (
-	<div class="jumbotron">
-		<h1>React Trivia App</h1> <button className="btn btn-dark" onClick={() => setGameOn(true)}>start game</button>
+	<div className="jumbotron">
+		<h1>React Trivia App</h1> <button className="btn btn-dark" onClick={() => setGameOn(true)}>Start game</button>
+		<hr></hr>
+		<div><a href="https://github.com/nireo/react-quiz">Github</a></div>
 	</div> )
 }
 
