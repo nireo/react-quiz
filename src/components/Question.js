@@ -1,15 +1,8 @@
 import React, {useState} from "react"
 
 const Question = (props) => {
-    const [questionNumber, setQuestionNumber] = useState(Number(0))
+    const [questionNumber, setQuestionNumber] = useState(0)
     const [score, setScore] = useState(0)
-
-    if (questionNumber === undefined) {
-        setQuestionNumber(Number(0))
-    }
-
-    console.log(questionNumber)
-    console.log(props.questions[questionNumber].correct_answer)
 
     const handleTrue = () => {
         if (props.questions[questionNumber].correct_answer === "True") {
@@ -30,8 +23,15 @@ const Question = (props) => {
     }
 
     // display ending page
-    if (questionNumber === 11) { 
-        
+    if (questionNumber === 10) { 
+        return (
+            <div className="jumbotron">
+                <h2>The game has ended</h2>
+                <hr></hr>
+                <p>You scored {score} points, which means you got {score / 10 * 100}% correct.</p>
+                <div><a href="https://github.com/nireo/react-quiz">Github</a></div>
+            </div>
+        )
     }
 
     return (
