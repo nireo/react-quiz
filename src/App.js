@@ -7,6 +7,7 @@ function App() {
 	const [ questions, setQuestions ] = useState([])
 	const [ gameOn, setGameOn ] = useState(false)
 
+	// hook function that gets the needed info
 	const hook = () => {
 		axios
 			.get(`https://opentdb.com/api.php?amount=10&type=boolean`)
@@ -37,8 +38,13 @@ function App() {
 	<div className="jumbotron">
 		<h1>React Trivia App</h1> <button className="btn btn-dark" onClick={() => setGameOn(true)}>Start game</button>
 		<hr></hr>
-		<div><a href="https://github.com/nireo/react-quiz">Github</a></div>
+		<div><a href="https://github.com/nireo/react-quiz" target="_blank" rel="noopener noreferrer">Github</a></div>
 	</div> )
 }
 
 export default App;
+
+
+var string = "thiaw "
+
+string.replace(string.slice(string.indexOf('&'), string.indexOf(';')), "'")
