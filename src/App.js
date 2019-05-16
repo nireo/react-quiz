@@ -9,13 +9,15 @@ function App() {
 
 	const hook = () => {
 		axios
-			.get('https://opentdb.com/api.php?amount=10&type=boolean')
+			.get(`https://opentdb.com/api.php?amount=10&type=boolean`)
 			.then(response => {
 				// since the api response in an object turns object in to a simpler array for useState
 				const objectArray = Object.values(response.data)
+
 				// since get returns results_status and results [1] includes all the question data
 				setQuestions(objectArray[1])
 			})
+
 	}
 
 	// execute the api request
@@ -25,11 +27,7 @@ function App() {
 	if (gameOn) {
 		return (
 			<div className="jumbotron">
-				<h1>Question:</h1>
-				<ul>
-					<Question questions={ questions } />
-				</ul>
-				<button className="btn btn-dark" onClick={() => setGameOn(false)}>go back</button>
+				<Question questions={questions} />
 			</div>
 		)
 	}

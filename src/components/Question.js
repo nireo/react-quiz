@@ -29,6 +29,11 @@ const Question = (props) => {
         }
     }
 
+    // display ending page
+    if (questionNumber === 11) { 
+        
+    }
+
     return (
     <div>
        <h3>{props.questions[questionNumber].question}</h3> 
