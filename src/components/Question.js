@@ -24,14 +24,6 @@ const Question = (props) => {
         }
     }
 
-    // since the api doesn't use ', but uses &quot;
-    // if (props.questions[questionNumber].question.indexOf('&') !== -1) {
-    //     props.questions[questionNumber].question.replace(
-    //             props.question[questionNumber].slice()
-
-    //     )
-    // }
-
     // display ending page
     if (questionNumber === 10) { 
         return (
@@ -39,7 +31,13 @@ const Question = (props) => {
                 <h2>The game has ended</h2>
                 <hr></hr>
                 <p>You scored {score} points, which means you got {score / 10 * 100}% correct.</p>
-                <div><a target="_blank" rel="noopener noreferrer" href="https://github.com/nireo/react-quiz">Github</a></div>
+                <div>
+                    <a 
+                        target="_blank" rel="noopener noreferrer" 
+                        href="https://github.com/nireo/react-quiz">
+                        Github
+                    </a>
+                </div>
                 <button className="btn btn-primary"></button>
             </div>
         )
@@ -47,7 +45,7 @@ const Question = (props) => {
 
     return (
     <div>
-       <h3>{questions[questionNumber].question}</h3> 
+       <h3>{questions[questionNumber].question} </h3> 
        <div>
             <button onClick={() => {handleTrue(); setQuestionNumber(questionNumber + 1) }} className="btn btn-primary">True</button>
             <button onClick={() => {handleFalse(); setQuestionNumber(questionNumber + 1) }} className="btn btn-danger">False</button>
