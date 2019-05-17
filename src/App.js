@@ -61,8 +61,3 @@ function App() {
 }
 
 export default App;
-
-
-var string = "thiaw "
-
-string.replace(string.slice(string.indexOf('&'), string.indexOf(';')), "'")
