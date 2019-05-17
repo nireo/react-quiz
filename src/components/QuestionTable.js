@@ -2,7 +2,7 @@ import React from "react"
 
 const QuestionTable = (props) => {
     const questions = props.questionList.map(question => 
-        <tr>
+        <tr key={question.number}>
             <th scope="row">{question.number}</th>
             <td>{question.question}</td>
             <td>{question.yourAnswer}</td>
