@@ -13,7 +13,7 @@ function App() {
 	// hook function that gets the needed info
 	const hook = () => {
 		axios
-			.get(`https://opentdb.com/api.php?amount=10&type=${questionType}`)
+			.get(`https://opentdb.com/api.php?amount=10&type=boolean`)
 			.then(response => {
 				// since the api response in an object turns object in to a simpler array for useState
 				const objectArray = Object.values(response.data)
