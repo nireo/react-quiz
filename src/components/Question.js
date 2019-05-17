@@ -1,8 +1,12 @@
 import React, {useState} from "react"
+import QuestionTable from "./QuestionTable"
 
 const Question = (props) => {
     const [questionNumber, setQuestionNumber] = useState(0)
     const [score, setScore] = useState(0)
+    const [questionsRight, setQuestionsRight] = useState([])
+    const [questionsWrong, setQuestionsWrong] = useState([])
+    
     // to clean code up a bit
     const questions = props.questions
 
@@ -21,8 +25,16 @@ const Question = (props) => {
             setScore(score + 1)
         } else {
             console.log("your answer is incorrect")
+            setQuestionsWrong(
+                questionsWrong.concat(
+                    [[questionNumber, questions[questionNumber].question,
+                    "True", "False"]]
+                ))
         }
     }
+
+    console.log(questionsRight)
+    console.log(questionsWrong)
 
     // display ending page
     if (questionNumber === 10) { 
@@ -39,6 +51,15 @@ const Question = (props) => {
                     </a>
                 </div>
                 <button className="btn btn-primary"></button>
+                <div>   
+                    <h3>Correct answers</h3>
+                    <QuestionTable questionList={questionsRight} />
+                </div>
+                <div>
+                    <h3>Wrong answers</h3>
+                    <QuestionTable questionList={questionsWrong} />
+                </div>
+
             </div>
         )
     }
