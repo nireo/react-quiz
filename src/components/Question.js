@@ -12,24 +12,40 @@ const Question = (props) => {
 
     const handleTrue = () => {
         if (questions[questionNumber].correct_answer === "True") {
-            console.log("your answer was correct")
             setScore(score + 1)
+            setQuestionsRight(questionsRight.concat({
+                number: questionNumber,
+                question: questions[questionNumber].question,
+                yourAnswer: "True",
+                correctAnswer: "True"
+            }))
+
         } else {
-            console.log("your answer is incorrect")
+            setQuestionsWrong(questionsWrong.concat({
+                number: questionNumber,
+                question: questions[questionNumber].question,
+                yourAnswer: "True",
+                correctAnswer: "False"
+            }))
         }
     }   
 
     const handleFalse = () => {
         if (questions[questionNumber].correct_answer === "False") {
-            console.log("your answer was correct")
             setScore(score + 1)
+            setQuestionsRight(questionsRight.concat({
+                number: questionNumber,
+                question: questions[questionNumber].question,
+                yourAnswer: "False",
+                correctAnswer: "False"
+            }))
         } else {
-            console.log("your answer is incorrect")
-            setQuestionsWrong(
-                questionsWrong.concat(
-                    [[questionNumber, questions[questionNumber].question,
-                    "True", "False"]]
-                ))
+            setQuestionsWrong(questionsWrong.concat({
+                number: questionNumber,
+                question: questions[questionNumber].question,
+                yourAnswer: "False",
+                correctAnswer: "True"
+            }))
         }
     }
 
@@ -50,11 +66,11 @@ const Question = (props) => {
                         Github
                     </a>
                 </div>
-                <button className="btn btn-primary"></button>
                 <div>   
                     <h3>Correct answers</h3>
                     <QuestionTable questionList={questionsRight} />
                 </div>
+                <hr></hr>
                 <div>
                     <h3>Wrong answers</h3>
                     <QuestionTable questionList={questionsWrong} />
