@@ -1,13 +1,11 @@
 import React, {useState} from "react"
 import QuestionTable from "./QuestionTable"
-import Success from "./Success";
 
 const Question = (props) => {
     const [questionNumber, setQuestionNumber] = useState(0)
     const [score, setScore] = useState(0)
     const [questionsRight, setQuestionsRight] = useState([])
     const [questionsWrong, setQuestionsWrong] = useState([])
-    const [successMessage, setSuccessMessage] = useState(null)
     
     // to clean code up a bit
     const questions = props.questions
@@ -53,13 +51,8 @@ const Question = (props) => {
 
     // display ending page
     if (questionNumber === 10) {
-        setSuccessMessage("Congratulations on completing the game")
-        setTimeout(() => {
-            setSuccessMessage(null)
-        }, 5000)
         return (
             <div className="jumbotron">
-                <Success message={successMessage} />
                 <h2>The game has ended</h2>
                 <hr></hr>
                 <p>You scored {score} points, which means you got {score / 10 * 100}% correct.</p>
@@ -80,7 +73,7 @@ const Question = (props) => {
                     <h3>Wrong answers</h3>
                     <QuestionTable questionList={questionsWrong} />
                 </div>
-
+                <hr></hr>
             </div>
         )
     }

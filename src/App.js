@@ -48,7 +48,13 @@ function App() {
   	return (
 	<div className="jumbotron">
 		<h1>React Trivia App</h1>
-		<button className="btn btn-dark" onClick={() => {setGameOn(true); setQuestionType('boolean')}}>Play True / false</button><button className="btn btn-primary" onClick={() => {setMultiple(true); setQuestionType('multiple')}}>Play Multiple choice</button>
+		<div>
+		<button className="btn btn-dark" onClick={() => {setGameOn(true); setQuestionType('boolean')}}>Play True / false</button>
+		</div>
+		<div>
+			<button className="btn btn-primary" onClick={() => {setMultiple(true); setQuestionType('multiple')}}>Play Multiple choice</button>
+		</div>	
+
 		<hr></hr>
 		<div>
 			<a 
