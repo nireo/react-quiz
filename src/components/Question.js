@@ -86,8 +86,8 @@ const Question = (props) => {
             <button onClick={() => {handleFalse(); setQuestionNumber(questionNumber + 1) }} className="btn btn-danger">False</button>
         </div>
        <div>Score: {score}/10</div>
+       <div>Question: {questionNumber + 1}/10</div>
     </div>)
 }
-
 
 export default Question
