@@ -10,22 +10,19 @@ function App() {
 	const [ multiple, setMultiple ] = useState(false)
 	const [ questionType, setQuestionType ] = useState('') 
 
-	// hook function that gets the needed info
-	const hook = () => {
+	// api request
+	useEffect(() => {
 		axios
-			.get(`https://opentdb.com/api.php?amount=10&type=boolean`)
+			.get("https://opentdb.com/api.php?amount=10&type=boolean")
 			.then(response => {
-				// since the api response in an object turns object in to a simpler array for useState
 				const objectArray = Object.values(response.data)
 
 				// since get returns results_status and results [1] includes all the question data
 				setQuestions(objectArray[1])
+			}).catch(err => {
+				console.log(err)
 			})
-
-	}
-
-	// execute the api request
-	useEffect(hook, [])
+	}, [])
 
 	// displays a different site to users, if they started the game
 	if (gameOn) {
