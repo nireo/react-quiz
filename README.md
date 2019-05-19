@@ -2,16 +2,14 @@
 
 This is a project for fun and practice. It will use a popquiz api to prompt user with fresh and new questions every single time. The specific API that will be used is the [Open Trivia Databases](https://opentdb.com/) trivia API.
 
-#### The technologies used in this project will be:
+#### The technologies used in this project:
 * [axios](https://github.com/axios/axios)
 * [react](https://reactjs.org/)
 * [bootstrap](https://getbootstrap.com/)
 
 
 #### TODO:
-    * Add parameters for API request (for example: question amount, category, difficulty)
-    * Add functionality for multiple choice questions and true/false questions
-    * Add score functionality to display the amount of rights and wrongs (done)
-    * Add an ending page which contains game info
-    * Add a quiz timer
-    * Add score functionality (done)
+* Add parameters for API request (for example: question amount, category, difficulty)
+* Add functionality for multiple choice questions and true/false questions
+* Add an ending page which contains game info
+* Add a quiz timer

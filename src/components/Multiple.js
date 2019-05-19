@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from "react"
 import axios from "axios"
 
-const Multiple = (props) => {
+const Multiple = () => {
+    const [questions, setQuestions] = useState([])
     const [questionNumber, setQuestionNumber] = useState(0)
     const [score, setScore] = useState(0)
-    const [questions, setQuestions] = useState([])
+    const [falseAnswers, setFalseAnswers] = useState([])
+    const [allAnswers, setAllAnswers] = useState([])
 
     useEffect(() =>{
         axios.get("https://opentdb.com/api.php?amount=10&type=multiple")
@@ -20,9 +22,15 @@ const Multiple = (props) => {
             })
     }, [])
 
+    const handleClick = (value) => {
+        if (value == questions[questionNumber].correct_answer) {
+            setScore(score + 1)
+        }
+    }
+
     return (
         <div>
- 
+
         </div>
     )
 }
