@@ -4,6 +4,8 @@ const reducer = (state = null, action) => {
   switch (action.type) {
     case 'INIT_QUESTIONS':
       return action.data;
+    case 'CLEAR_QUESTIONS':
+      return null;
     default:
       return state;
   }
@@ -14,9 +16,13 @@ export const initQuestions = () => {
     const questions = await questionService.initTrueOrFalse();
     dispatch({
       type: 'INIT_QUESTIONS',
-      data: questions
+      data: questions.results
     });
   };
+};
+
+export const clearQuestions = () => {
+  return { type: 'CLEAR_QUESTIONS' };
 };
 
 export default reducer;

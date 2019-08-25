@@ -1,11 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import QuestionTable from './QuestionTable';
+import { initQuestions, clearQuestions } from '../reducers/questionReducer';
+import { Link } from 'react-router-dom';
 
 const Question = props => {
   const [questionNumber, setQuestionNumber] = useState(0);
   const [score, setScore] = useState(0);
   const [questionsRight, setQuestionsRight] = useState([]);
   const [questionsWrong, setQuestionsWrong] = useState([]);
+
+  useEffect(() => {
+    if (props.questions === null) {
+      props.initQuestions();
+    }
+  }, [props]);
+
+  if (props.questions === null) {
+    return (
+      <div className="container text-center">
+        <div className="spinner-border" role="status">
+          <span className="sr-only">Loading...</span>
+        </div>
+        <p>Loading questions...</p>
+      </div>
+    );
+  }
 
   // to clean code up a bit
   const questions = props.questions;
@@ -60,6 +80,9 @@ const Question = props => {
   if (questionNumber === 10) {
     return (
       <div className="jumbotron">
+        <Link to="/" onClick={() => props.clearQuestions()}>
+          Go back
+        </Link>
         <h2>The game has ended</h2>
         <hr></hr>
         <p>
@@ -119,4 +142,13 @@ const Question = props => {
   );
 };
 
-export default Question;
+const mapStateToProps = state => {
+  return {
+    questions: state.questions
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { initQuestions, clearQuestions }
+)(Question);
