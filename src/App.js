@@ -3,7 +3,7 @@ import axios from 'axios';
 import './App.css';
 import Question from './components/Question';
 import Multiple from './components/Multiple';
-import { Link } from 'react-router-dom';
+import Routes from './Routes';
 
 function App() {
   const [questions, setQuestions] = useState([]);
@@ -46,32 +46,7 @@ function App() {
   // render starting page
   return (
     <div className="jumbotron">
-      <h1>React Trivia App</h1>
-      <div>
-        <Link to="/true-or-false">Play True / false</Link>
-      </div>
-      <div>
-        <button
-          className="btn btn-primary"
-          onClick={() => {
-            setMultiple(true);
-            setQuestionType('multiple');
-          }}
-        >
-          Play Multiple choice
-        </button>
-      </div>
-
-      <hr></hr>
-      <div>
-        <a
-          href="https://github.com/nireo/react-quiz"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Github
-        </a>
-      </div>
+      <Routes />
     </div>
   );
 }
