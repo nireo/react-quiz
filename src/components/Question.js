@@ -115,26 +115,31 @@ const Question = props => {
 
   return (
     <div>
-      <h3>{questions[questionNumber].question} </h3>
+      <h3>
+        {questions[questionNumber].question
+          .replace(/&quot;/g, '"')
+          .replace(/&#039;/g, "'")}{' '}
+      </h3>
       <div>
-        <button
+        <Link
           onClick={() => {
             handleTrue();
             setQuestionNumber(questionNumber + 1);
           }}
-          className="btn btn-primary"
+          className="waves-effect waves-light btn"
         >
           True
-        </button>
-        <button
+        </Link>
+        {'  '}
+        <Link
           onClick={() => {
             handleFalse();
             setQuestionNumber(questionNumber + 1);
           }}
-          className="btn btn-danger"
+          className="waves-effect waves-light btn"
         >
           False
-        </button>
+        </Link>
       </div>
       <div>Score: {score}/10</div>
       <div>Question: {questionNumber + 1}/10</div>

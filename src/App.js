@@ -4,7 +4,7 @@ import Routes from './Routes';
 
 function App() {
   return (
-    <div className="jumbotron">
+    <div class="container">
       <Routes />
     </div>
   );
