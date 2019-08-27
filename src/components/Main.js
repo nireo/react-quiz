@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { clearQuestions } from '../reducers/questionReducer';
 
-const Main = () => {
+const Main = props => {
+  useEffect(() => {
+    if (props.questions !== null) {
+      props.clearQuestions();
+    }
+  }, [props]);
   return (
     <div className="jumbotron">
       <h1>React trivia app</h1>
@@ -24,4 +31,13 @@ const Main = () => {
   );
 };
 
-export default Main;
+const mapStateToProps = state => {
+  return {
+    questions: state.questions
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { clearQuestions }
+)(Main);
