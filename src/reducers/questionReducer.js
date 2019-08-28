@@ -11,14 +11,19 @@ const reducer = (state = null, action) => {
   }
 };
 
-export const initQuestions = type => {
+export const initQuestions = (type, custom) => {
   return async dispatch => {
     let questions;
-    if (type === 'multiple') {
-      questions = await questionService.initMultiple();
+    if (custom) {
+      questions = await questionService.initCustom(custom);
     } else {
-      questions = await questionService.initTrueOrFalse();
+      if (type === 'multiple') {
+        questions = await questionService.initMultiple();
+      } else {
+        questions = await questionService.initTrueOrFalse();
+      }
     }
+
     dispatch({
       type: 'INIT_QUESTIONS',
       data: questions.results

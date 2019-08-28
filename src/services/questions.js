@@ -14,4 +14,24 @@ const initMultiple = async () => {
   return response.data;
 };
 
-export default { initTrueOrFalse, initMultiple };
+const initCustom = async custom => {
+  const gameType = custom.gameType ? 'boolean' : 'multiple';
+  const difficultyType = () => {
+    switch (custom.difficulty) {
+      case 'easy':
+        return '&difficulty=easy';
+      case 'medium':
+        return '&difficulty=medium';
+      case 'hard':
+        return '&difficulty=hard';
+      default:
+        return '';
+    }
+  };
+  const response = await axios.get(
+    `https://opentdb.com/api.php?amount=${custom.qAmount}&type=${gameType}${difficultyType}`
+  );
+  return response.data;
+};
+
+export default { initTrueOrFalse, initMultiple, initCustom };
