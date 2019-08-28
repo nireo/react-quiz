@@ -75,7 +75,7 @@ const Question = props => {
       );
     }
   };
-
+  
   // display ending page
   if (questionNumber === 10) {
     return (

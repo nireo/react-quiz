@@ -39,6 +39,16 @@ const Multiple = props => {
     }
     setIndex(index + 1);
   };
+  
+  if (index === 10) {
+    return (
+      <div className="container">
+        <h3>Game finished</h3>
+        <p>You scored {score}</p>
+        <Link to="/">Go back</Link>
+      </div>
+    )
+  }
 
   return (
     <div className="container">
