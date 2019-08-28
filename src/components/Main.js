@@ -19,6 +19,9 @@ const Main = props => {
         <Link to="/multiple-choice">Play multiple choice</Link>
       </div>
       <div>
+        <Link to="/configure">Start game</Link>
+      </div>
+      <div>
         <a
           href="https://github.com/nireo/react-quiz"
           target="_blank"
