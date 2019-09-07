@@ -29,7 +29,9 @@ const initCustom = async custom => {
     }
   };
   const response = await axios.get(
-    `https://opentdb.com/api.php?amount=${custom.qAmount}&type=${gameType}${difficultyType}`
+    `https://opentdb.com/api.php?amount=${
+      custom.qAmount
+    }&type=${gameType}${difficultyType()}`
   );
   return response.data;
 };

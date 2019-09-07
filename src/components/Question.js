@@ -30,52 +30,16 @@ const Question = props => {
   // to clean code up a bit
   const questions = props.questions;
 
-  const handleTrue = () => {
-    if (questions[questionNumber].correct_answer === 'True') {
+  const ifCorrect = answer => {
+    if (questions[questionNumber].correct_answer === answer) {
       setScore(score + 1);
-      setQuestionsRight(
-        questionsRight.concat({
-          number: questionNumber,
-          question: questions[questionNumber].question,
-          yourAnswer: 'True',
-          correctAnswer: 'True'
-        })
-      );
+      setQuestionsRight(questions[questionNumber]);
     } else {
-      setQuestionsWrong(
-        questionsWrong.concat({
-          number: questionNumber,
-          question: questions[questionNumber].question,
-          yourAnswer: 'True',
-          correctAnswer: 'False'
-        })
-      );
+      setQuestionsWrong(questions[questionNumber]);
     }
+    setQuestionNumber(questionNumber + 1);
   };
 
-  const handleFalse = () => {
-    if (questions[questionNumber].correct_answer === 'False') {
-      setScore(score + 1);
-      setQuestionsRight(
-        questionsRight.concat({
-          number: questionNumber,
-          question: questions[questionNumber].question,
-          yourAnswer: 'False',
-          correctAnswer: 'False'
-        })
-      );
-    } else {
-      setQuestionsWrong(
-        questionsWrong.concat({
-          number: questionNumber,
-          question: questions[questionNumber].question,
-          yourAnswer: 'False',
-          correctAnswer: 'True'
-        })
-      );
-    }
-  };
-  
   // display ending page
   if (questionNumber === 10) {
     return (
@@ -122,20 +86,14 @@ const Question = props => {
       </h3>
       <div>
         <Link
-          onClick={() => {
-            handleTrue();
-            setQuestionNumber(questionNumber + 1);
-          }}
+          onClick={() => ifCorrect('True')}
           className="waves-effect waves-light btn"
         >
           True
         </Link>
         {'  '}
         <Link
-          onClick={() => {
-            handleFalse();
-            setQuestionNumber(questionNumber + 1);
-          }}
+          onClick={() => ifCorrect('False')}
           className="waves-effect waves-light btn"
         >
           False
