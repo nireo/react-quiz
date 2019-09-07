@@ -33,9 +33,9 @@ const Question = props => {
   const ifCorrect = answer => {
     if (questions[questionNumber].correct_answer === answer) {
       setScore(score + 1);
-      setQuestionsRight(questions[questionNumber]);
+      setQuestionsRight(questionsRight.concat(questions[questionNumber]));
     } else {
-      setQuestionsWrong(questions[questionNumber]);
+      setQuestionsWrong(questionsWrong.concat(questions[questionNumber]));
     }
     setQuestionNumber(questionNumber + 1);
   };

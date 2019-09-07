@@ -2,11 +2,9 @@ import React from 'react';
 
 const QuestionTable = props => {
   const questions = props.questionList.map(question => (
-    <tr key={question.number}>
-      <th scope="row">{question.number}</th>
+    <tr key={question.question}>
       <td>{question.question}</td>
-      <td>{question.yourAnswer}</td>
-      <td>{question.correctAnswer}</td>
+      <td>{question.correct_answer}</td>
     </tr>
   ));
 
@@ -15,10 +13,8 @@ const QuestionTable = props => {
       <table className="table">
         <thead>
           <tr>
-            <th scope="col">Number</th>
             <th scope="col">Question</th>
-            <th scope="col">Your Answer</th>
-            <th scope="col">Correct Answer</th>
+            <th scope="col">Correct answer</th>
           </tr>
         </thead>
         <tbody>{questions}</tbody>
